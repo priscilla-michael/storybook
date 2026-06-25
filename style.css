@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&family=Lora:wght@400;500&display=swap');
 
 :root {
-  --ivory: #f8f1e8;
   --paper: #fbf6ef;
+  --ivory: #f5eadf;
   --terracotta: #b56a45;
   --terracotta-dark: #8f4f35;
   --moss: #74785b;
@@ -10,9 +10,9 @@
   --ink: #4f4038;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -25,8 +25,9 @@ body {
   min-height: 100vh;
   padding: 28px;
   background:
-    radial-gradient(circle at top left, rgba(231,201,194,.45), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(181,106,69,.25), transparent 35%),
+    radial-gradient(circle at 10% 15%, rgba(231,201,194,.55), transparent 28%),
+    radial-gradient(circle at 90% 90%, rgba(181,106,69,.28), transparent 34%),
+    linear-gradient(135deg, rgba(255,255,255,.35), transparent),
     var(--ivory);
 }
 
@@ -34,9 +35,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--terracotta-dark);
   font-family: 'Cormorant Garamond', serif;
   letter-spacing: 1px;
+  position: relative;
+  z-index: 5;
 }
 
 .nav a {
@@ -45,76 +47,81 @@ body {
   font-size: 18px;
 }
 
-.monogram {
-  border: 1px solid var(--terracotta);
-  border-radius: 999px;
-  padding: 8px 12px;
+.brand {
+  font-size: 20px;
 }
 
 .arch {
-  max-width: 720px;
+  max-width: 760px;
   min-height: 78vh;
-  margin: 30px auto 0;
-  padding: 70px 34px;
+  margin: 32px auto 0;
+  padding: 78px 36px;
   text-align: center;
-  background: var(--paper);
+  background:
+    linear-gradient(rgba(251,246,239,.94), rgba(251,246,239,.94)),
+    var(--paper);
   border: 3px solid var(--terracotta);
-  border-radius: 360px 360px 24px 24px;
-  box-shadow: 0 25px 80px rgba(79, 64, 56, .12);
+  border-radius: 380px 380px 26px 26px;
+  box-shadow: 0 28px 90px rgba(79, 64, 56, .14);
+  animation: fadeUp 1.2s ease both;
 }
 
-.oak {
-  color: var(--moss);
-  font-size: 34px;
-  margin-bottom: 10px;
+.leaf {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.leaf.small {
+  font-size: 24px;
 }
 
 .eyebrow {
   font-family: 'Cormorant Garamond', serif;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   font-size: 13px;
   color: var(--moss);
+  margin-bottom: 28px;
 }
 
 h1 {
   font-family: 'Allura', cursive;
-  font-size: clamp(64px, 12vw, 128px);
-  line-height: .78;
-  margin: 28px 0 20px;
+  font-size: clamp(72px, 13vw, 140px);
+  line-height: .85;
+  margin: 0 0 16px;
   color: var(--terracotta-dark);
   font-weight: 400;
 }
 
 h1 span {
   font-family: 'Cormorant Garamond', serif;
-  font-size: .38em;
+  font-size: .42em;
 }
 
 .arch h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(28px, 5vw, 48px);
+  font-size: clamp(30px, 5vw, 50px);
   font-weight: 400;
-  margin: 0 0 18px;
+  margin: 0 0 20px;
   color: var(--terracotta);
 }
 
 .invite {
-  max-width: 430px;
-  margin: 0 auto 32px;
+  max-width: 460px;
+  margin: 0 auto 34px;
   line-height: 1.8;
   font-size: 17px;
 }
 
 .button {
   display: inline-block;
-  padding: 13px 26px;
+  padding: 14px 30px;
   border: 1px solid var(--terracotta);
   border-radius: 999px;
   color: var(--terracotta-dark);
   text-decoration: none;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
+  font-size: 19px;
   transition: .3s ease;
 }
 
@@ -124,8 +131,8 @@ h1 span {
 }
 
 .chapter {
-  min-height: 80vh;
-  padding: 100px 28px;
+  min-height: 85vh;
+  padding: 110px 28px;
   text-align: center;
   background: var(--paper);
 }
@@ -139,7 +146,40 @@ h1 span {
 
 .chapter h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(44px, 8vw, 86px);
+  font-size: clamp(48px, 9vw, 92px);
   font-weight: 400;
-  margin: 8px 0;
+  margin: 10px 0;
+  color: var(--terracotta-dark);
+}
+
+.chapter-subtitle {
+  font-size: 19px;
+  color: var(--moss);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 18px;
+  }
+
+  .arch {
+    min-height: 74vh;
+    padding: 64px 22px;
+    border-radius: 240px 240px 22px 22px;
+  }
+
+  .nav a {
+    font-size: 16px;
+  }
 }
